@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 {
 	struct rectangle rect = get_rect();
 	print_rect(rect);
-	printf("The are of this rectangel: %d\n", rect_area(rect));
+	printf("The area of this rectangel: %d\n", rect_area(rect));
 	
     return 0;
 }
