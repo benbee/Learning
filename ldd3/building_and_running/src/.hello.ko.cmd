@@ -1,0 +1,1 @@
+cmd_/home/habwtl/Learning/ldd3/building_and_running/src/hello.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.2.0-57-generic/scripts/module-common.lds --build-id  -o /home/habwtl/Learning/ldd3/building_and_running/src/hello.ko /home/habwtl/Learning/ldd3/building_and_running/src/hello.o /home/habwtl/Learning/ldd3/building_and_running/src/hello.mod.o

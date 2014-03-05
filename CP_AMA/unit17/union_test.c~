@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    struct 
+	{
+		union {
+			char a, b;
+			int c;
+		} d;
+		int e[5];
+	} f, &p = &f;
+    return 0;
+}

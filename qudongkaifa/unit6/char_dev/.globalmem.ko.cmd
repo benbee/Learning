@@ -1,0 +1,1 @@
+cmd_/home/habwtl/Learning/qudongkaifa/unit6/char_dev/globalmem.ko := ld -r -m elf_x86_64 -T /usr/src/linux-3.11.6-4/scripts/module-common.lds --build-id  -o /home/habwtl/Learning/qudongkaifa/unit6/char_dev/globalmem.ko /home/habwtl/Learning/qudongkaifa/unit6/char_dev/globalmem.o /home/habwtl/Learning/qudongkaifa/unit6/char_dev/globalmem.mod.o

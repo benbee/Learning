@@ -1,0 +1,7 @@
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    printf("X is %d", (12+6)/2*3);
+    return 0;
+}

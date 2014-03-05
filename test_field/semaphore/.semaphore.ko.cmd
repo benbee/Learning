@@ -1,0 +1,1 @@
+cmd_/home/habwtl/Learning/test_field/semaphore/semaphore.ko := ld -r -m elf_x86_64 -T /usr/src/linux-3.11.10-7/scripts/module-common.lds --build-id  -o /home/habwtl/Learning/test_field/semaphore/semaphore.ko /home/habwtl/Learning/test_field/semaphore/semaphore.o /home/habwtl/Learning/test_field/semaphore/semaphore.mod.o

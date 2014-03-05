@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+#define LINE_LENGTH 8
+
+int main(int argc, char *argv[])
+{
+    char ch;
+    int count;
+
+    count = 0;
+
+    while ((ch = getchar()) != '#') {
+	printf("%d", ch);
+	count++;
+	if (count == 8)
+	    printf("\n");
+    }
+    
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+

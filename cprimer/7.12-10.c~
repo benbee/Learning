@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+#define SINGLE_BASE 17850
+#define MASTER_BASE 23900
+#define MARRIED_BASE 297500
+#define MARRIED_DIVORCE_BASE 147875
+#define B_RATE 0.15
+#define S_RATE 0.28
+
+float cal_income(int choice, float income);
+int choose_status(void);
+void print_stars();
+
+int main(int argc, char *argv[])
+{
+    int choice;
+
+    printf("Please enter your choice:\n");
+    choice = choose_status();
+    printf("Please enter your income:\n");
+    printf("You will get %.2f after tax.\n", cal_income(int choice, float income));
+    return 0;
+}
+
+void print_stars(void)
+{
+    int i;
+    for (i = 0; i < 16; ++i) {
+	printf("***");
+    }
+}

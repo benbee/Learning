@@ -1,0 +1,147 @@
+#include <stdio.h>
+
+struct fraction {
+	int numerator;
+	int denominator;
+};
+
+int get_gcd(int a, int  b);
+int get_lcm(int a, int b);
+int double_max(int a, int b);
+int double_min(int a, int b);
+struct fraction simp_frac(struct fraction frac);
+int find_common_deno(struct fraction a, int b);
+struct fraction add_fraction(struct fraction a, struct fraction b);
+struct fraction sub_fraction(struct fraction a, struct fraction b);
+struct fraction multi_fraction(struct fraction a, struct fraction b);
+struct fraction divi_fraction(struct fraction a, struct fraction b);
+struct fraction get_frac(void);
+void print_frac(struct fraction frac);
+
+int main(int argc, char *argv[])
+{
+	struct fraction a = get_frac();
+	struct fraction b = get_frac();
+
+	print_frac(a);
+	printf(" + ");
+	print_frac(b);
+	printf(" is ");
+	print_frac(add_fraction(a, b));
+	printf("\n");
+}
+
+int double_max(int a, int b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+}
+
+int double_min(int a, int b)
+{
+	if (a < b)
+		return a;
+	else
+		return b;
+}
+
+int get_gcd(int a, int b)
+{
+	int max = double_max(a, b);
+	int min = double_min(a, b);
+
+	if (max % min != 0)
+		return get_gcd(min, (max % min));
+	return min;
+}
+
+int get_lcm(int a, int b)
+{
+	int result = (a * b) / get_gcd(a, b);
+
+	if (result > 0)
+		return result;
+	else
+		return -result;
+}
+
+struct fraction simp_frac(struct fraction frac)
+{
+	int gcd = get_gcd(frac.numerator, frac.denominator);
+
+	if (gcd == 1)
+		return frac;
+	else {
+		frac.numerator /= gcd;
+		frac.denominator /= gcd;
+
+		return frac;
+	}
+}
+
+struct fraction common_deno(struct fraction a, int lcm)
+{
+	a.numerator *= (lcm / a.denominator);
+	a.denominator = lcm;
+
+	return a;
+}
+
+struct fraction add_fraction(struct fraction a, struct fraction b)
+{
+	int lcm = get_lcm(a, b);
+
+	a = common_deno(a, lcm);
+	b = common_deno(b, lcm);
+
+	a.numerator += b.numerator;
+
+	return simp_frac(a);
+}
+
+struct fraction sub_fraction(struct fraction a, struct fraction b)
+{
+	int lcm = get_lcm(a, b);
+
+	a = common_deno(a, lcm);
+	b = common_deno(b, lcm);
+
+	a.numerator -= b.numerator;
+
+	return simp_frac(a);
+}
+
+struct fraction multi_fraction(struct fraction a, struct fraction b)
+{
+	a.numerator *= b.numerator;
+	a.denominator *= b.denominator;
+
+	return simp_frac(a);
+}
+struct fraction divi_fraction(struct fraction a, struct fraction b)
+{
+	a.numerator *= b.denominator;
+	a.denominator *= b.numerator;
+
+	return simp_frac(a);
+}
+
+struct fraction get_frac(void)
+{
+	struct fraction retval;
+
+	printf("Enter the denominator of the fraction: ");
+	scanf("%d", &retval.denominator);
+
+	printf("Enter the numerator of the fraction: ");
+	scanf("%d", &retval.numerator);
+
+	return retval;
+}
+
+void print_frac(struct fraction frac)
+{
+	printf("%d/%d", frac.numerator, frac.denominator);
+}

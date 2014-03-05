@@ -1,0 +1,19 @@
+/* globalmem: a simple linux char device driver */
+
+#include <linux/module.h>
+#include <linux/types.h>
+#include <linux/fs.h>
+#include <linux/errno.h>
+#include <linux/mm.h>
+#include <linux/sched.h>
+#include <linux/init.h>
+#include <linux/cdev.h>
+#include <asm/io.h>
+#include <asm/system.h>
+#include <asm/uaccess.h>
+
+#define GLOBALMEM_SIZE 0x100	/* globalmem max size 4K */
+#define MEM_CLEAR 0x1			/* clear globalmem */
+#define GLOBALMEM_MAJOR 521
+
+static int globalmem_major = GLOBALMEM_MAJOR;

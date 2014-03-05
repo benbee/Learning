@@ -1,0 +1,36 @@
+local_irq_disable(); /* 屏蔽中断 */
+....
+critical section   /* 临界区 */
+....
+local_irq_enable(); /* 开中断 */
+
+/*-----------------------------*/
+
+static atomic_t xxx_available = ATOMIC_INIT(1); /* 定义原子变量 */
+
+static int xxx_open(struct inode *inode, struct file *filp)
+{
+	...
+	if (!atomic_dec_and_test(&xxx_available)) {
+		atomic_inc(&xxx_available);
+		return - EBUSY;	/* 已经打开 */
+	}
+	...
+	return 0; /* 成功 */
+}
+
+static int xxx_release(struct inode *inode, struct file *filep)
+{
+	atomic_inc(&xx_available);
+	return 0;
+}
+
+/*-----------------------------*/
+
+/* define one spinlock */
+spinlock_t lock;
+spin_lock_init(&lock);
+
+spin_lock(&lock);	/* 获取自旋锁，保护临界区 */
+...		/* 临界区 */
+spin_unlock(&lock);	/* 解锁 */

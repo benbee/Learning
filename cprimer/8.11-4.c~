@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+char get_first(void);
+
+int main(int argc, char *argv[])
+{
+    int in_word;
+    char ch;
+    int word_count;
+    int char_count;
+
+    ch = get_first();
+    in_word = 1;
+
+    while ((ch = getchar()) != EOF) {
+	
+    }
+    
+    return 0;
+}

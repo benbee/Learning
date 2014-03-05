@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+char choose_operation(void);
+double enter_first_num(void);
+double enter_second_num(void);
+
+int main(int argc, char *argv[])
+{
+    char operation;
+    double first_num;
+    double second_num;
+
+    while ((operation = choose_operation()) != 'q') {
+	first_num = enter_first_num();
+	second_num = enter_second_num();
+	printf("%.2f %c %.2f\n", first_num, operation, second_num, cal_result(first_num, operation, second_num));
+    }
+    
+    
+    return 0;
+}

@@ -1,0 +1,3 @@
+obj-m := hellomod.o
+CURREN_PATH:=$(shell pwd)
+LINUX_KERNEL:=$()

@@ -1,0 +1,1 @@
+cmd_/home/habwtl/Learning/OS_homework/unit2/print_pid.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.2.0-51-generic/scripts/module-common.lds --build-id  -o /home/habwtl/Learning/OS_homework/unit2/print_pid.ko /home/habwtl/Learning/OS_homework/unit2/print_pid.o /home/habwtl/Learning/OS_homework/unit2/print_pid.mod.o

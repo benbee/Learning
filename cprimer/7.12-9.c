@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <math.h>
+
+int isPrime(int n);
+
+int main(int argc, char *argv[])
+{
+    int i;
+    int num;
+
+    printf("Please enter a number to analysis:\n");
+    while (scanf("%d", &num) != EOF) {
+	for (i = 0; i <= num; i++) {
+	    if (isPrime(i) == 1)
+		printf("%5d", i);
+	}
+	printf("\n");
+    }
+
+    return 0;
+}
+
+int isPrime(int n)
+{
+    int i;
+    if (n < 2) return 0;
+    if (n == 2) return 1;
+    for (i = 3; i*i <= n; i += 1) {
+	if (n%i == 0)
+	    return 0;
+    }
+    return 1;
+}

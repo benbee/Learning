@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+double min(double x, double y);
+
+int main(int argc, char *argv[])
+{
+    double x, y;
+    
+    printf("Enter two numbers:\n");
+    scanf("%lf %lf", &x, &y);
+    printf("The min number between %.2lf and %.2lf is %.2lf\n", x, y, min(x, y));
+    
+    return 0;
+}
+
+double min(double x, double y)
+{
+    double min;
+
+    min = x > y ? y : x;
+    return min;
+}

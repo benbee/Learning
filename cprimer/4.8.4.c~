@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    char name[20];
+    int  height_in_cm;
+
+    printf("Enter your height:\n");
+    scanf("%d", height_in_cm);
+
+    printf("%s, you are %.2f meters tall\n", height_in_cm / 100);
+    return 0;
+}

@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+#define  MAXCOUNT 10
+
+int main(int argc, char *argv[])
+{
+    int ch;
+    int count;
+
+    while ((ch = getchar()) != EOF) {
+	if (count = MAXCOUNT) {
+	    printf("\n");
+	}
+	if (ch == '\t') {
+	    printf("\\t");
+	} else if (ch == '\n') {
+	    printf("\\n");
+	} else {
+	    putchar(ch);
+	}
+	count++;
+	
+    }
+    
+    return 0;
+}

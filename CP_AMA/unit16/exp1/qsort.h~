@@ -1,0 +1,7 @@
+/* qsort head file */
+
+#ifndef N
+
+#define N 10
+
+#endif

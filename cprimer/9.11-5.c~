@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+void larger_of(double * x, double * y);
+void max(double x, double y);
+
+int main(int argc, char *argv[])
+{
+    double x, y;
+
+    printf("Please enter two numbers:\n");
+    
+    
+    return 0;
+}

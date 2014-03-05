@@ -1,0 +1,17 @@
+/* Sorts an array of integers using Quicksort algorithm */
+
+#include <stdio.h>
+
+#define N 10
+
+void quicksort(int a[], int low, int high);
+int split(int a[], int low, int high);
+
+int main(int argc, char *argv[])
+{
+    int a[N], i;
+
+	print
+	
+    return 0;
+}

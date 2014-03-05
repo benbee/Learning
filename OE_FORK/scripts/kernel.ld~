@@ -1,0 +1,8 @@
+/*
+ *		kernel.ld -- link file for kernel
+ */
+ ENTRY(start)
+ SECTIONS
+ {
+ 
+ }

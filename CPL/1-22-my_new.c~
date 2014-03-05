@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+#define MAXCOL	20
+#define TABINC	8
+
+char line[MAXCOL]
+
+void printl(int pos);
+int exptab(int pos);
+int newpos(int pos);
+int findblnk(int pos);
+
+main()
+{
+  
+}

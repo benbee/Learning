@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+void one_two(void);
+void two(void);
+
+int main(int argc, char *argv[])
+{
+    printf("starting now:");
+    one_two();
+    two();
+    printf("three\n");
+    printf("done!\n");
+    return 0;
+}

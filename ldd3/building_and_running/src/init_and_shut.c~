@@ -1,0 +1,11 @@
+static int __init initialization_function(void)
+{
+	/* Initialization code here */
+}
+module_init(Initialization);
+
+static void __exit cleanup_function(void)
+{
+	/* Cleanup code here */
+}
+module_exit(cleanup_function);

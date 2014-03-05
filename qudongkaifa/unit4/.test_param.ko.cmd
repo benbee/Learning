@@ -1,0 +1,1 @@
+cmd_/home/habwtl/Learning/qudongkaifa/unit4/test_param.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.2.0-57-generic/scripts/module-common.lds --build-id  -o /home/habwtl/Learning/qudongkaifa/unit4/test_param.ko /home/habwtl/Learning/qudongkaifa/unit4/test_param.o /home/habwtl/Learning/qudongkaifa/unit4/test_param.mod.o

@@ -1,0 +1,39 @@
+/* menutte.c */
+#include <stdio.h>
+
+char get_choice(void);
+char get_first(void);
+int get_int(void);
+void count(void);
+
+int main(int argc, char *argv[])
+{
+    int choice;
+    void count(void);
+
+    while ((choice = get_choice()) != 'q') {
+	switch (choice)
+	{
+	    case 'a':
+		printf("Buy low, sell high.\n");
+		break;
+	    case 'b':
+		putchar('\a');
+		break;
+	    case 'c':
+		count();
+		break;
+	    default:
+		printf("Program error!\n");
+		break;
+	}
+    }
+    printf("Bye.\n");
+    
+    return 0;
+}
+
+void count(void)
+{
+    int n, i;
+}

@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+char * duplicate(char *str);
+
+int main(int argc, char *argv[])
+{
+    char test_str[255];
+	char *p;
+	
+	printf("Enter something: ");
+	scanf("%s", test_str);
+
+	p = duplicate(test_str);
+
+	printf("You entered: \"%s\"", p);
+	
+    return 0;
+}

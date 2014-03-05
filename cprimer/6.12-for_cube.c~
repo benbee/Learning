@@ -1,0 +1,13 @@
+/* printout cube table */
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    int n;
+    printf("n    power     cube\n");
+
+    for (n = 1; n < 10; ++i) {
+	printf("%5d%5d%5d\n", n, n*n, n*n*n);
+    }
+    return 0;
+}

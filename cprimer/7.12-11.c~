@@ -1,0 +1,98 @@
+#include <stdio.h>
+
+#define K_VER_PRICE = 1.25
+#define BETA_VULGARIS_PRICE = 0.65
+#define CARROT_ 0.89
+#define DISCOUNT 0.05
+#define DISCOUNT_LINE 100
+
+float cal_trans(float weight);
+float cal_cost(float k_weight, float b_weight, float c_weight);
+char choose_goods(void);
+float get_goods_weight(char ch);
+void print_order(float k_weight, float b_weight, float c_weight, float total_cost);
+void print_stars(void);
+
+int main(int argc, char *argv[])
+{
+    float k_weight;
+    float b_weight;
+    float c_weight;
+    char choice;
+    int continue_buy = 0;
+    float total_cose = 0;
+
+    k_weight = b_weight = c_weight = 0;
+
+    printf("Please select the kinds of goods you like:\n");
+    choice = choose_goods();
+    while (choice != 'q') {
+	switch(choice)
+	{
+	case 'a':
+	case 'A':
+	    k_weight = get_goods_weight('a');
+	    break;
+	case 'b':
+	case 'B':
+	    b_weight = get_goods_weight('b');
+	    break;
+	case 'c':
+	case 'C':
+	    c_weight = get_goods_weight('c');
+	    break;
+	default:
+	    break;
+	}
+	continue_buy = get_anything_else();
+	if (continue_buy) {
+	    choice = choose_goods();
+	} else {
+	    choice = 'q';
+	}
+    }
+
+    print_order(k_weight, b_weight, c_weight);
+    printf("BYE!\n");
+    
+    return 0;
+}
+
+void print_stars(void)
+{
+    int i;
+    for (i = 0; i <= 16; i++) {
+	printf("***");
+    }
+}
+
+char choose_goods(void)
+{
+    int choice;
+    
+    print_star();
+    printf("Select goods:\n");
+    printf("a) k_whatever\tb) beta vulgaris\n");
+    printf("c) carrot\tq) quit\n");
+    print_star();
+
+    while ((choice =getchar()) != EOF) {
+	switch(choice)
+	{
+	case 'a':
+	case 'A':
+	    return 'a';
+	case 'b':
+	case 'B':
+	    return 'b';
+	case 'c':
+	case 'C':
+	    return 'c';
+	case:'q':
+	case:'Q':
+	    return 'q';
+	default:
+	    printf("WARNING: Wrong choice, please choice again.\n");
+	}
+    }
+}

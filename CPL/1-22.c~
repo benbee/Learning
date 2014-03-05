@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+#define WAPR_LENGTH 10
+#define IN  1
+#define OUT 0
+int main(int argc, char *argv[])
+{
+    int i, c;
+    int n = 0;
+    
+    while ((c = getchar()) != 0) {
+	
+    }
+    return 0;
+}

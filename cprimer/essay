@@ -1,0 +1,3 @@
+# 8.10-3 use this file as input text; file: essayt as output text
+# BTW: ./8.10-3 < essay > essayt && ./8.10-3 > essayt < essay  work the same
+hello there nice to meet you!

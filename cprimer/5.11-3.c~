@@ -1,0 +1,2 @@
+/* convert days to weeks and days */
+#include <stdio.h>

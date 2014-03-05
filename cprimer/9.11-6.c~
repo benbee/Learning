@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int ch_position(char ch);
+
+int main(int argc, char *argv[])
+{
+    int ch;
+
+    printf("Please enter something to analysis:\n");
+    while((ch = getchar()) != EOF) {
+	if (ch >= 'a' && ch <= 'Z')
+	    printf("The position of %c is %d\n", ch, ch_position(ch));
+    }
+    
+    return 0;
+}

@@ -1,0 +1,1 @@
+cmd_/home/habwtl/Learning/ELDD/first_mod/hello_mod.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.2.0-57-generic/scripts/module-common.lds --build-id  -o /home/habwtl/Learning/ELDD/first_mod/hello_mod.ko /home/habwtl/Learning/ELDD/first_mod/hello_mod.o /home/habwtl/Learning/ELDD/first_mod/hello_mod.mod.o

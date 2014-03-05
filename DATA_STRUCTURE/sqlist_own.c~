@@ -1,0 +1,94 @@
+#include <stdio.h>
+
+#define MAXSIZE 20
+#define OK      1
+#define ERROR   0
+#define TRUE    1
+#define FALSE   0
+
+typedef int ElemType;
+typedef int Status;
+
+typedef struct {
+    ElemType data[MAXSIZE];
+    int length;
+} Sqlist;
+
+Status visit(ElemType e)
+{
+    printf("%4d", e);
+    return OK;
+}
+
+Status InitList(Sqlist *L)
+{
+    L->length = 0;
+    return OK;
+}
+
+Status ListEmpty(Sqlist L)
+{
+    if (L.length == 0)
+	return TRUE;
+    else
+	return FALSE;
+}
+
+Status ClearList(Sqlist *L)
+{
+    L->length = 0;
+    return OK;
+}
+
+int ListLength(Sqlist L)
+{
+    return L.length; 
+}
+
+Status GetElem(Sqlist L, int i, ElemType *e)
+{
+    if (L.length == 0 || i < 1 || i > L.length)
+	return ERROR;
+    *e = L.data[i - 1];
+    return OK;
+}
+
+Status ListInsert(Sqlist *L, int i, ElemType e)
+{
+    int k;
+    if (L->length == MAXSIZE)
+	return ERROR;
+    if (i < 1 || i > L->length)
+	return ERROR;
+    for (k = L->length; k > i - 1; --k) {
+	L->data[k] = L->data[k-1];
+    }
+    L->data[i-1] = e;
+    L->length++;
+    return OK;
+}
+
+Status ListDelete(Sqlist *L, int i, ElemType *e)
+{
+    int k;
+    if (L->length == 0)
+	return ERROR;
+    if (i < 1 || i > L->length)
+	return ERROR;
+    *e = L->data[i - 1];
+    for (k = i - 1; k < L->length; ++k) {
+	L->data[k] = L->data[k+1];
+    }
+    L->length--;
+    return OK;
+}
+
+Status ListTraverse(Sqlist L)
+{
+    
+}
+
+int LocateElem(Sqlist L, ElemType e)
+{
+    
+}

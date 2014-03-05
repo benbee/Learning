@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int bigger_than_guess_number(void);
+
+int main(int argc, char *argv[])
+{
+    int guess;
+    int max_guess;
+    int min_guess;
+    char ch;
+
+    max_guess = 100;
+    min_guess = 0;
+    guess = 50;
+    printf("Hi there,");
+    printf("please think a number(1-100) to let me guess:\n");
+    printf("Is it %d ?\n", guess);
+    while ((ch = getchar()) != 'y') {
+	if (bigger_than_guess_number()) {
+    
+	}
+}
+    printf("HAHA! I gues the right number!\n");
+    printf("I am super love this game!\n");
+    
+    return 0;
+}

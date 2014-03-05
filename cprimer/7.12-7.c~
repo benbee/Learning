@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+#define BASE_SALARY 10.0
+#define RATE1 0.15
+#define RATE2 0.20
+#define RATE3 0.25
+
+int main(int argc, char *argv[])
+{
+    
+    
+    return 0;
+}

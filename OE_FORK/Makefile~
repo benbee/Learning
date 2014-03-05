@@ -1,0 +1,3 @@
+#!Makefile
+
+C_SOURCES = $(shell find . -name "*.c")
