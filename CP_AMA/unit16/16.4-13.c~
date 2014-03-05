@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define RECTANGLE 4
+#define CIRCLE 0
+
+struct point {
+	int x, y;
+};
+
+struct shape {
+    int shape_kind;				/* RECTANGLE or CIRCLE */
+	struct point center;
+};

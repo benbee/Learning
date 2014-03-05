@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    enum {MON, TUE, WEN, THU, FRI, STA, SUN};
+
+	printf("mon: %d", MON);
+	printf("tue: %d", TUE);
+	printf("wen: %d", WEN);
+	printf("thu: %d", THU);
+	printf("fri: %d", FRI);
+	printf("sat: %d", SAT);
+	printf("sun: %d", SUN);
+	
+    return 0;
+}

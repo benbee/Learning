@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    enum {FALSE, TRUE} b;
+	int i;
+	b = FALSE;
+    return 0;
+}

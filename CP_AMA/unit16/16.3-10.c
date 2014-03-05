@@ -13,6 +13,7 @@ int rect_area(struct rectangle);
 struct rectangle get_rect(void);
 void print_rect(struct rectangle);
 int point_int_rect(struct point po, struct rectangle rect);
+struct point get_point(void);
 
 
 int main(int argc, char *argv[])
@@ -50,7 +51,7 @@ struct rectangle get_rect(void)
 		printf("Upper left:\n");
 		retval.upper_left = get_point();
 		printf("Lower right:\n");
-		retval.lower_right = get_rect();
+		retval.lower_right = get_point();
 		
 		if (retval.upper_left.x <= retval.lower_right.x &&
 			retval.upper_left.y <= retval.lower_right.y) {
@@ -85,12 +86,12 @@ int rect_area(struct rectangle rect)
 	return width * height;
 }
 
-int point_int_rect(struct point po, struct rectangle rect)
+int point_in_rect(struct point po, struct rectangle rect)
 {
 	if (po.x <= rect.lower_right.x &&
 		po.x >= rect.upper_left.x &&
 		po.y <= rect.lower_right.y &&
-		po.y >= rect.upper_left)
+		po.y >= rect.upper_left.y)
 		return 1;
 	return 0;
 }
