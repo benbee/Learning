@@ -1,0 +1,20 @@
+* Tasks
+** DONE Start new org file for tutorial
+** DONE Outline document
+** TODO Wtite introduction
+** TODO recheck this
+
+
+
+* Introduction
+** Obtaining org-mode
+** Installation
+** Configuration
+* The basics
+** Creating a new file
+** Simple task list
+** Using headlines to struct a document
+** Links to other places
+** Adding notes to a task
+** Scheduling an appointment
+** Using the agenda
