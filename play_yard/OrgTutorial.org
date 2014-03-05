@@ -1,13 +1,25 @@
 * Tasks
 ** DONE Start new org file for tutorial
+   Create new "OrgTutorial.org".
+   CLOSED: [2014-03-05 Wed 13:53]
 ** DONE Outline document
+   CLOSED: [2014-03-05 Wed 13:53]
 ** TODO Wtite introduction
 ** TODO recheck this
-
+   SCHEDULED: <2014-03-05 Wed>
 
 
 * Introduction
+  
+Org-mode is personal information management and outlining tool for
+Emacs.
+
 ** Obtaining org-mode
+
+You can download org-mode from the [[http://orgmode.org][org-mode home page.]]
+[[*Obtaining%20org-mode][file-position]]
+[[https://baidu.com][baidu]]
+
 ** Installation
 ** Configuration
 * The basics
