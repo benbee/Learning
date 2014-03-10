@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Student {
+private:
+	string name;
+	int age;
+	char id[10];
+	int 1st_ys;
+	int 2ec_ys;
+	int 3rd_ys;
+	int 4th_ys;
+
+public:
+	SetName() {
+		cin >> name;
+	}
+	
+	
+};
