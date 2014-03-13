@@ -1,0 +1,7 @@
+
+using namespace std;
+
+class Ctest {
+  public:
+    ~Ctest() { cout << "Destructor called" << endl; }
+};

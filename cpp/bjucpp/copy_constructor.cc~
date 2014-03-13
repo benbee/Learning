@@ -1,0 +1,10 @@
+
+
+void Func(A a1){ }
+
+int main()
+{
+	A a2;
+	Func(a2);
+	return 0;
+}
