@@ -80,6 +80,11 @@ void list_ls(const struct node *list)
 
     p = list->next;
     while (p) {
+        if (p->str[0] == '.'){
+            p = p->next;
+            continue;
+        }
+
         if (line_left > max) {
             printf("%-*s", max+1, p->str);
             line_left -= max + 1;
