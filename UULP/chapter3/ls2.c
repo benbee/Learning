@@ -1,4 +1,4 @@
-/* ls2.c -- like "ls -l"
+auto/* ls2.c -- like "ls -l"
  * purpose list contents of directory or directories
  * action if no args, use. else list file in args
  * not use stat and pwd.h and grp.h
