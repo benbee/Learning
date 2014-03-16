@@ -10,12 +10,18 @@ int main(int argc, char *argv[])
     struct node *p;
 
     list = init_list();
-    //list_append(list, p, "HOHO_NOWARNING\n");
+    p = create_node("HOHO_NOWARNING\n");
+    list_append(list, p);
+    p = create_node("second");
+    list_append(list, p);
 
-    printf("%s", list->str);
+    /* printf("%s\n", list->str); */
+    /* printf("%s", p->str); */
+    print_list(list);
 
     //free_node(p);
-    free(p);
+    //free(p);
+    free_list(list);
 
     return 0;
 }

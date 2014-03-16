@@ -18,20 +18,18 @@ struct node *create_node(char *str)
     struct node *node_c;
     node_c = malloc(sizeof(struct node));
     strcpy(node_c->str, str);
+    node_c->next = NULL;
+    node_c->prev = NULL;
 
     return node_c;
 }
 
-int list_append(struct node *list, struct node *node_a, char *str)
+void list_append(struct node *list, struct node *node_a)
 {
     struct node *p = node_a;
-
-    p = create_node(str);
     p->next = list->next;
     p->prev = list;
     list->next = p;
-
-    return 0;
 }
 
 void free_list(struct node *list)
@@ -46,6 +44,7 @@ void free_list(struct node *list)
         p = p->next;
         free_node(q);
     }
+    free_node(list);
 }
 
 void free_node(struct node *node_f)
@@ -53,4 +52,26 @@ void free_node(struct node *node_f)
     assert(node_f != NULL);
 
     free(node_f);
+}
+
+void print_list(const struct node *list)
+{
+    while(list->next) {
+        printf("%s\n", list->next->str);
+        list = list->next;
+    }
+}
+
+int get_item_max_len(const struct node *list)
+{
+    int max = 0;
+
+    while (list->next) {
+        if (max < strlen(list->next->str)) {
+            max = strlen(list->next->str);
+        }
+        list = list->next;
+    }
+
+    return max;
 }
