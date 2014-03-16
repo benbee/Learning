@@ -44,6 +44,29 @@ struct node *sorted_merge(struct node *a, struct node *b)
     return result;
 }
 
+struct node *sorted_merge_r(struct node *a, struct node *b)
+{
+    struct node *result = NULL;
+
+    /* check length */
+    if (a == NULL)
+        return (b);
+    else if (b == NULL)
+        return (a);
+
+    /* pick either a or b, and recur */
+    if (strcmp(a->str, b->str) > 0) {
+        result = a;
+        result->next = sorted_merge(a->next, b);
+    } else {
+        result = b;
+        result->next = sorted_merge(a, b->next);
+    }
+
+    return result;
+}
+
+
 void front_back_split(struct node *source,
                       struct node **frontp, struct node **backp)
 {

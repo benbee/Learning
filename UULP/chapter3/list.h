@@ -8,11 +8,9 @@ struct node {
 
 struct node *init_list(); /* init the name list */
 struct node *create_node(char *str);
+
 void list_append(struct node *list, struct node *node_a);/*append file name*/
-//int delete_node(struct node *list, struct node *node_d);
 void free_list(struct node *list);
 void free_node(struct node *node_f);
 void print_list(const struct node *list);
-
 int get_item_max_len(const struct node *list);
-//int get_list_len(const struct node *list);

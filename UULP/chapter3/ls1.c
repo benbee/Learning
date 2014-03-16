@@ -10,11 +10,14 @@
 #include "merge_sort_list.h"
 
 int LINE_LEN;             /* max characters in one line of terminal */
+int r_flag = 0;
+int a_flag = 0;
 
 
 
 void do_ls(char [], struct node *list);
 void list_ls(const struct node *list);
+void handle_argv(const int argc,const char *argv[]);
 
 int main(int argc, char *argv[])
 {
@@ -32,6 +35,10 @@ int main(int argc, char *argv[])
     file_list->next = NULL;
 
     printf("argc: %d\n", argc);
+    handle_argv(argc, argv);
+
+    printf("a_flag: %d\nr_flag: %d\n", a_flag, r_flag);
+
     if (argc == 1) {
         do_ls(".", file_list);
     } else {
@@ -63,7 +70,6 @@ void do_ls(char *dirname, struct node *list)
             list_append(list, p);
             //printf("Appended: %s\n", p->str);
         }
-
         merge_sort(&list);
         list_ls(list);
     }
@@ -93,5 +99,26 @@ void list_ls(const struct node *list)
             printf("\n");
             line_left = LINE_LEN;
         }
+    }
+}
+
+void handle_argv(int argc, char *argv[])
+{
+    int ch;
+
+    while ((ch = getopt(argc, argv,"arl")) != -1) {
+        switch (ch) {
+        case 'a':
+            a_flag = 1;
+            break;
+        case 'r':
+            r_flag = 1;
+            break;
+        case 'l':
+            break;
+        default:
+            printf("Wrong argv!\n");
+        }
+
     }
 }
