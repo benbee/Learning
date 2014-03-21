@@ -1,8 +1,9 @@
 #include <cstring>
 #include <iostream>
 #include <string>
-#include<iomanip>
-
+#include <iomanip>
+// stop point fixed
+// need to consider the continue process
 using namespace std;
 
 // class Fighter {
@@ -23,26 +24,34 @@ private:
     static string fighterName[5];
     //static string fighterHealthPoints[5];
     int originHealth;
-    int current_id;
+    int count_proc;             // n timee the produceOne process
     int times;
     string fighters[100];
     string name;
     int productOrder[5];        // base on fighterName
     int fighterHp[5];
-
+    int end;
 public:
     ArmyBase(int f1hp, int f2hp, int f3hp, int f4hp, int f5hp,
              int o_hp, const string baseName);
-    void produceArmyBoth(ArmyBase , ArmyBase);
+    //void produceArmyBoth(ArmyBase , ArmyBase);
     int  countFighter(string fname);
     int produceOne(void);
     void addFighter(string fname);
     void print_name(void) { cout << name << endl; };
     void print_fighters(void);
+    void stop_msg(int times_);
+    int getEnd(void);
+    int getProcessable(void);
 };
 
-string ArmyBase::fighterName[5] = {"dargon", "ninja", "iceman", "lion", "wolf"};
+string ArmyBase::fighterName[5] = {"dragon", "ninja", "iceman", "lion", "wolf"};
 //int ArmyBase::times = 0;
+
+int ArmyBase::getEnd(void)
+{
+    return end;
+}
 
 void ArmyBase::print_fighters(void)
 {
@@ -55,7 +64,7 @@ ArmyBase::ArmyBase(int f1hp, int f2hp, int f3hp, int f4hp, int f5hp,
                    int o_hp, const string baseName)
 {
     times = 0;
-    current_id = 0;
+    count_proc = 0;
     // for (int i = 0; i < 100; i++) {
     //     fighters[i] = "";
     // }
@@ -66,7 +75,7 @@ ArmyBase::ArmyBase(int f1hp, int f2hp, int f3hp, int f4hp, int f5hp,
         productOrder[0] = 2;
         productOrder[1] = 3;
         productOrder[2] = 4;
-		productOrder[3] = 1;
+        productOrder[3] = 1;
         productOrder[4] = 0;
     }
 
@@ -74,7 +83,7 @@ ArmyBase::ArmyBase(int f1hp, int f2hp, int f3hp, int f4hp, int f5hp,
         productOrder[0] = 3;
         productOrder[1] = 0;
         productOrder[2] = 1;
-		productOrder[3] = 2;
+        productOrder[3] = 2;
         productOrder[4] = 4;
     }
     // need reorder
@@ -85,13 +94,15 @@ ArmyBase::ArmyBase(int f1hp, int f2hp, int f3hp, int f4hp, int f5hp,
     fighterHp[4] = f5hp;
 
     name = baseName;
+    end = 0;
+    ord_num = (count_proc - 1) % 5;
 }
 
 int ArmyBase::countFighter(string name)
 {
     int count = 0;
 
-    for (int i; i < 100; i++) {
+    for (int i = 0; i < 100; i++) {
         if (fighters[i] == name) {
             count++;
         }
@@ -102,57 +113,100 @@ int ArmyBase::countFighter(string name)
 
 int ArmyBase::produceOne()
 {
-    // need a if to jugg if wen can contunie to produce
-    current_id++;
-    int ord_num = current_id % 5 - 1;
-    fighters[current_id - 1] = fighterName[productOrder[ord_num]];
-    originHealth -= fighterHp[productOrder[]];
+    if (end > 0) {
+        return 0;
+    } else {
+        // need a if to jugg if wen can contunie to produce
+        count_proc++;
 
-    // print out product one state
-    cout << setw(3) << setfill('0') << times << " "<< name << " " <<
-        fighters[current_id - 1] <<
-        fighters[current_id] << " " << current_id << " born with "
-        "strength " << fighterHp[productOrder[ord_num]] <<
-        "," << countFighter(fighters[productOrder[0]]) <<
-        " " << fighters[current_id - 1] <<
-        " in " << name << " headquarter"
-         << endl;
+        fighters[count_proc - 1] = fighterName[productOrder[ord_num]];
+        originHealth -= fighterHp[productOrder[ord_num]];
 
-    times++;
+        if (processAble()) {
+            if (originHealth < 0) {
+                originHealth += fighterHp[productOrder[ord_num]];
+
+            }
+        }
+        // print out product one state
+        cout << setw(3) << setfill('0') << times << " "<< name << " " <<
+            fighters[count_proc - 1] <<
+            " " << count_proc << " born with "
+            "strength " << fighterHp[productOrder[ord_num]] <<
+            "," << countFighter(fighterName[productOrder[ord_num]]) <<
+            " " << fighters[count_proc - 1] <<
+            " in " << name << " headquarter"
+             << endl;
+
+
+        // if ((originHealth - fighterHp[productOrder[count_proc % 5]]) < 0){
+        //     end++;
+        //     //stop_msg(times);
+        //}
+        times++;
+    }
 
     return 0;
 }
 
 void ArmyBase::addFighter(string fname)
 {
-    fighters[current_id++] = fname;
+    fighters[count_proc++] = fname;
 
     std::cout << "Fighter:" << fname
               << "added" << std::endl;
 }
 
-void ArmyBase::produceArmyBoth(ArmyBase red, ArmyBase blue)
+void produceArmyBoth(ArmyBase red, ArmyBase blue)
 {
-    return;
+    do
+    {
+        red.produceOne();
+        blue.produceOne();
+    } while (red.getEnd() <= 0 || blue.getEnd() <= 0);
+
 }
 
+int ArmyBase::processAble(void)
+{
+    for (int i = 0; i < 5; i++) {
+        if (originHealth >= fighterHp[i]) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void ArmyBase::stop_msg(int times_)
+{
+    cout << setw(3) << setfill('0') << times_ + 1 << " " << name <<
+        " headquarter stops making warriors" << endl;
+}
 
 int main(int argc, char *argv[])
 {
-    ArmyBase red_base(3, 4, 5, 6, 7, 50, "red");
-    red_base.produceOne();
-    red_base.produceOne();
-    red_base.produceOne();
-    red_base.produceOne();
+    int case_n = 0;
+    int fhp[5];
+    cin >> case_n;
 
-    ArmyBase blue_base(3, 4, 5, 6, 7, 50, "blue");
-    blue_base.produceOne();
-    blue_base.produceOne();
-    blue_base.produceOne();
-    blue_base.produceOne();
-    //blue_base.addFighter("bnb");
-    // blue_base.print_name();
-    // blue_base.print_fighters();
+    for (int i = 1; i <= case_n; i++) {
+
+        int ori_hp;
+        cin >> ori_hp;
+
+        for (int j = 0; j < 5; j++) {
+            cin >> fhp[j];
+        }
+        cout << "Case:" << i << endl;
+        ArmyBase red_base(fhp[0], fhp[1], fhp[2], fhp[3], fhp[4],
+                          ori_hp, "red");
+
+        ArmyBase blue_base(fhp[0], fhp[1], fhp[2], fhp[3], fhp[4],
+                          ori_hp, "blue");
+        produceArmyBoth(red_base, blue_base);
+    }
+
+    // red_base.produceOne();
 
     return 0;
 }
