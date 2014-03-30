@@ -44,7 +44,9 @@ int main(int argc, char *argv[])
     } else {
         while (--argc) {
             printf("%s\n", *++argv);
-            do_ls(*argv, file_list);
+            if (*argv[0] != '-') {
+                do_ls(*argv, file_list);
+            }
         }
     }
 
@@ -100,9 +102,10 @@ void list_ls(const struct node *list)
             line_left = LINE_LEN;
         }
     }
+    printf("\n");
 }
 
-void handle_argv(int argc, char *argv[])
+void handle_argv(const int argc, const char *argv[])
 {
     int ch;
 
@@ -119,6 +122,5 @@ void handle_argv(int argc, char *argv[])
         default:
             printf("Wrong argv!\n");
         }
-
     }
 }

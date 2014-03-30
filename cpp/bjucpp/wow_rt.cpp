@@ -43,6 +43,10 @@ public:
     void print_fighters(void);
     void stop_msg(int times_);
     int getEnd(void);
+<<<<<<< HEAD
+=======
+    int processAble(void);
+>>>>>>> 1c37f7d9559cecb17e6660ef98edc244c8e54481
     int getNextOrdNum(int current_ord_num);
 };
 
@@ -54,6 +58,7 @@ int ArmyBase::getEnd(void)
     return end;
 }
 
+<<<<<<< HEAD
 int ArmyBase::getNextOrdNum(int current_ord_num)
 {
     int i;
@@ -73,6 +78,20 @@ int ArmyBase::getNextOrdNum(int current_ord_num)
     return -1;
 }
 
+=======
+int ArmyBase::processAble()
+{
+    for (int i = 0; i < 5; i++)
+    {
+        if (originHealth >= fighterHp[i])
+            return i;
+    }
+    stop_msg(times);
+    return -1;
+}
+
+
+>>>>>>> 1c37f7d9559cecb17e6660ef98edc244c8e54481
 void ArmyBase::print_fighters(void)
 {
     for (int i = 0; i < 100; i++) {
@@ -116,7 +135,41 @@ ArmyBase::ArmyBase(int f1hp, int f2hp, int f3hp, int f4hp, int f5hp,
     name = baseName;
     end = 0;
     ord_num = 0;
+<<<<<<< HEAD
+=======
 }
+
+int ArmyBase::getNextOrdNum(int current_ord_num)
+{
+    if (!processAble()) {
+        //std::cout << name << ": Cant get one because impossible" << std::endl;
+        end = 1;
+        // stop_msg(times - 1);
+        return -1;
+    }
+    int i;
+    current_ord_num = current_ord_num % 5;
+
+    for (i = current_ord_num + 1; i < 5; i++) {
+        if (originHealth >= fighterHp[i]) {
+            //cout << "get one in back" << endl;
+            return i;
+        }
+    }
+
+    for (i = 0; i < current_ord_num + 1; i++) {
+        if (originHealth >= fighterHp[i]) {
+            //cout << "get one in fornt" << endl;
+            return i;
+        }
+    }
+    //std::cout << "none exesist" << std::endl;
+    end = 1;
+    // stop_msg(times - 1);
+    return -1;
+>>>>>>> 1c37f7d9559cecb17e6660ef98edc244c8e54481
+}
+
 
 int ArmyBase::countFighter(string name)
 {
@@ -142,6 +195,7 @@ int ArmyBase::produceOne()
             originHealth -= fighterHp[productOrder[ord_num]];
             if (originHealth < 0) {
                 originHealth += fighterHp[productOrder[ord_num]];
+<<<<<<< HEAD
                 //count_proc--;
                 ord_num = getNextOrdNum(ord_num);
                 //produceOne();
@@ -165,6 +219,25 @@ int ArmyBase::produceOne()
             stop_msg(times - 1);
             return -1;
         }
+=======
+                ord_num = getNextOrdNum(ord_num);
+            }
+            // print out product one state
+            cout << setw(3) << setfill('0') << times << " "<< name << " " <<
+                fighters[count_proc - 1] <<
+                " " << count_proc << " born with "
+                "strength " << fighterHp[productOrder[ord_num]] <<
+                "," << countFighter(fighterName[productOrder[ord_num]]) <<
+                " " << fighters[count_proc - 1] <<
+                " in " << name << " headquarter"
+                 << endl;
+        }
+
+        // if ((originHealth - fighterHp[productOrder[count_proc % 5]]) < 0){
+        //     end++;
+        //     //stop_msg(times);
+        //}
+>>>>>>> 1c37f7d9559cecb17e6660ef98edc244c8e54481
         times++;
     }
 
@@ -189,6 +262,19 @@ void produceArmyBoth(ArmyBase red, ArmyBase blue)
 
 }
 
+<<<<<<< HEAD
+=======
+// int ArmyBase::processAble(void)
+// {
+//     for (int i = 0; i < 5; i++) {
+//         if (originHealth >= fighterHp[i]) {
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
+
+>>>>>>> 1c37f7d9559cecb17e6660ef98edc244c8e54481
 void ArmyBase::stop_msg(int times_)
 {
     cout << setw(3) << setfill('0') << times_ + 1 << " " << name <<
